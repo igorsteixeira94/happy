@@ -22,7 +22,7 @@ const Home: React.FC = () => {
             <span>Bahia</span>
           </address>
 
-          <Button>
+          <Button page="/home">
             <FiArrowRight size={26} />
           </Button>
         </Footer>
