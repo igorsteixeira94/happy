@@ -1,6 +1,6 @@
 <p align="center">
 <img src="https://user-images.githubusercontent.com/47749249/95790689-423ff100-0cb6-11eb-817c-f6a78e47d0e8.png" width="320px"/>
-<p align="center"><i>Visite prfanatos e mude o dia de muitas crianças: RocketSeat para o Next Level Week#3</i></p>
+<p align="center"><i>Visite orfanatos e mude o dia de muitas crianças: RocketSeat para o Next Level Week#3</i></p>
 </p>
 <p align="center">
 <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/igorsteixeira94/happy?color=%23FFD666">
@@ -34,7 +34,8 @@ yarn start
 * FrontEnd (Web):
   * ReacJs;
   * React Router DOM;
-  * Styled-Components
+  * Styled-Components;
+  * Leaflet e react-leaflet;
 
 
 
