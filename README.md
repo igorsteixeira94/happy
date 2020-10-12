@@ -13,7 +13,7 @@
 [Como Usar](#como-usar)  | [Tecnologias](#rocket-tecnologias) |  [Features](#features-implementadas) |  [Screenshot](#screenshot) |  [Estrutura Pastas](#estrutura-pastas)
 :-------:                | ------:                            |:-------:                             | ------:                    | ------:
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c5691026-2379-43cc-acc1-18c0866a4ea2/deploy-status)](https://app.netlify.com/sites/happynlw/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c5691026-2379-43cc-acc1-18c0866a4ea2/deploy-status)](https://happynlw.netlify.app/)
 
 ## Como Usar
 
