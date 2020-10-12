@@ -1,8 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
-
-import { Container, HomeWrapper, LogoImage, Footer } from './styles';
-import Button from '../components/Button';
+import { Container, HomeWrapper, LogoImage, Footer, AcessApp } from './styles';
 
 const Home: React.FC = () => {
   return (
@@ -22,9 +20,9 @@ const Home: React.FC = () => {
             <span>Bahia</span>
           </address>
 
-          <Button page="/home">
+          <AcessApp to="/app">
             <FiArrowRight size={26} />
-          </Button>
+          </AcessApp>
         </Footer>
       </HomeWrapper>
     </Container>

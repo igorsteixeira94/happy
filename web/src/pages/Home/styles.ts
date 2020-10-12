@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { darken } from 'polished';
+
 import landing from '../../images/landing.svg';
 import logo from '../../images/logo.svg';
 
@@ -104,5 +107,37 @@ export const Footer = styled.footer`
         text-align: center;
       }
     }
+  }
+`;
+
+export const AcessApp = styled(Link)`
+  width: 8rem;
+  height: 8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 3rem;
+
+  transition: background 0.2s;
+
+  background: var(--color-btn-home);
+
+  svg {
+    color: ${darken(0.3, '#FFD666')};
+  }
+
+  &:hover {
+    background: var(--color-btn-home-hover);
+
+    svg {
+      color: ${darken(0.5, '#96FEFF')};
+    }
+  }
+
+  //Breakpoints
+  @media (max-width: 530px) {
+    width: 80%;
   }
 `;
