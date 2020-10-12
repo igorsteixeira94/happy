@@ -4,6 +4,9 @@ export default createGlobalStyle`
    :root{
     --color-font-default: #fff;
     --color-bcg-default: #ebf2f5;
+    --color-btn-home:#FFD666;
+    --color-btn-home-hover:#96FEFF;
+
     font-size: 62.5%;
   }
 
