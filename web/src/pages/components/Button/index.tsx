@@ -1,14 +1,13 @@
 import React from 'react';
 
-import { FiArrowRight } from 'react-icons/fi';
 import { Container } from './styles';
 
-const Button: React.FC = () => {
-  return (
-    <Container>
-      <FiArrowRight size={26} />
-    </Container>
-  );
+interface ButtonProps {
+  children: React.ReactNode;
+}
+
+const Button: React.FC<ButtonProps> = ({ children }: ButtonProps) => {
+  return <Container>{children}</Container>;
 };
 
 export default Button;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import landing from '../../images/landing.svg';
 import logo from '../../images/logo.svg';
 
+// Container pai da pagina
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -12,11 +13,13 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
+// Logo Happy
 export const LogoImage = styled.img.attrs({
   src: logo,
   alt: 'Happy',
 })``;
 
+// Div com o conteudo da pagina
 export const HomeWrapper = styled.div`
   padding: 10px;
   width: 100%;
@@ -73,6 +76,7 @@ export const HomeWrapper = styled.div`
   }
 `;
 
+// Footer com cidade e estado mais botão de avançar
 export const Footer = styled.footer`
   display: flex;
   flex-direction: column;
