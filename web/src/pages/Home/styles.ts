@@ -18,13 +18,12 @@ export const LogoImage = styled.img.attrs({
 })``;
 
 export const HomeWrapper = styled.div`
+  padding: 10px;
   width: 100%;
   max-width: 1100px;
 
   height: 100%;
   max-height: 688px;
-
-  background: url(${landing}) no-repeat 80% center;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -53,6 +52,25 @@ export const HomeWrapper = styled.div`
       margin-top: 4rem;
     }
   }
+
+  //Mudar para mobile, com 1 columa
+  @media (max-width: 530px) {
+    background: none;
+    grid-template-columns: 1fr;
+
+    main {
+      align-items: center;
+    }
+
+    h1,
+    p {
+      display: none;
+    }
+  }
+  //Mostrar imagem de background
+  @media (min-width: 985px) {
+    background: url(${landing}) no-repeat 80% center;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -69,6 +87,18 @@ export const Footer = styled.footer`
     strong {
       display: block;
       text-align: right;
+    }
+  }
+
+  //BreakPoint
+  @media (max-width: 530px) {
+    align-items: center;
+    text-align: center;
+
+    address {
+      strong {
+        text-align: center;
+      }
     }
   }
 `;
