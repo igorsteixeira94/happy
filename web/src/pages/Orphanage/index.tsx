@@ -1,13 +1,131 @@
 import React from 'react';
 
+import { Map, Marker, TileLayer } from 'react-leaflet';
+import { FiClock, FiInfo } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
+
 import SideBar from '../../components/SideBar';
-// import { Container } from './styles';
+import {
+  Container,
+  OrphanageMain,
+  OrphanageDetails,
+  OrphanageImages,
+  OrphanageImageItem,
+  OrphanageContent,
+  OrphanageContentMap,
+  Line,
+  OrphanageContentOpen,
+  OrphanageContentOpenHour,
+  OrphanageContentOpenWeekends,
+  OrphanageContentContact,
+} from './styles';
+import mapIcon from '../../util/mapIcon';
 
 const Orphanage: React.FC = () => {
   return (
-    <div>
+    <Container>
       <SideBar />
-    </div>
+      <OrphanageMain>
+        <OrphanageDetails>
+          <img
+            src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+            alt="Lar das meninas"
+          />
+          <OrphanageImages>
+            <OrphanageImageItem type="button" className="active">
+              <img
+                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                alt="Lar das meninas"
+              />
+            </OrphanageImageItem>
+            <OrphanageImageItem type="button">
+              <img
+                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                alt="Lar das meninas"
+              />
+            </OrphanageImageItem>
+            <OrphanageImageItem type="button">
+              <img
+                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                alt="Lar das meninas"
+              />
+            </OrphanageImageItem>
+            <OrphanageImageItem type="button">
+              <img
+                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                alt="Lar das meninas"
+              />
+            </OrphanageImageItem>
+            <OrphanageImageItem type="button">
+              <img
+                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                alt="Lar das meninas"
+              />
+            </OrphanageImageItem>
+            <OrphanageImageItem type="button">
+              <img
+                src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                alt="Lar das meninas"
+              />
+            </OrphanageImageItem>
+          </OrphanageImages>
+          <OrphanageContent>
+            <h1>Lar das meninas</h1>
+            <p>
+              Presta assistência a crianças de 06 a 15 anos que se encontre em
+              situação de risco e/ou vulnerabilidade social.
+            </p>
+            <OrphanageContentMap>
+              <Map
+                center={[-27.2092052, -49.6401092]}
+                zoom={16}
+                style={{ width: '100%', height: 280 }}
+                dragging={false}
+                touchZoom={false}
+                zoomControl={false}
+                scrollWheelZoom={false}
+                doubleClickZoom={false}
+              >
+                <TileLayer
+                  url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                />
+                <Marker
+                  interactive={false}
+                  icon={mapIcon}
+                  position={[-27.2092052, -49.6401092]}
+                />
+              </Map>
+              <footer>
+                <a href="">Ver rotas no Google Maps</a>
+              </footer>
+            </OrphanageContentMap>
+            <Line />
+            <h2>Instruções para visita</h2>
+            <p>
+              Venha como se sentir mais à vontade e traga muito amor para dar.
+            </p>
+            <OrphanageContentOpen>
+              <OrphanageContentOpenHour>
+                <FiClock size={32} color="#15B6D6" />
+                Segunda à Sexta
+                <br />
+                8h às 18h
+              </OrphanageContentOpenHour>
+              <OrphanageContentOpenWeekends>
+                <FiInfo size={32} color="#39CC83" />
+                Atendemos
+                <br />
+                fim de semana
+              </OrphanageContentOpenWeekends>
+            </OrphanageContentOpen>
+            <OrphanageContentContact>
+              <FaWhatsapp size={20} color="#FFF" />
+              Entrar em contato
+            </OrphanageContentContact>
+          </OrphanageContent>
+        </OrphanageDetails>
+      </OrphanageMain>
+    </Container>
   );
 };
 
