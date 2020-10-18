@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+interface OpenProps {
+  open: boolean;
+}
 // Container pai
 export const Container = styled.div`
   display: flex;
@@ -139,10 +142,16 @@ export const OrphanageContentOpenHour = styled.div`
   border: 1px solid #b3dae2;
   color: #5c8599;
 `;
-export const OrphanageContentOpenWeekends = styled.div`
-  background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
-  border: 1px solid #a1e9c5;
-  color: #37c77f;
+
+export const OrphanageContentOpenWeekends = styled.div<OpenProps>`
+  background: ${props =>
+    props.open
+      ? 'linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%)'
+      : 'linear-gradient(154.16deg, #FCDDE8 7.85%, #ffffff 91.03%)'};
+
+  border: ${props => (props.open ? '1px solid #a1e9c5' : '1px solid #FFBCD4')};
+
+  color: ${props => (props.open ? '#37C77F' : '#FF669D')};
 `;
 
 export const OrphanageContentContact = styled.button`
