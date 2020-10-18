@@ -53,7 +53,7 @@ const Orphanage: React.FC<OpenWeekendsProps> = () => {
     api.get(`orphanages/${params.id}`).then(response => {
       setOrphanage(response.data);
     });
-  }, [params.id]);
+  }, [params]);
 
   if (!orphanage) {
     return <p>Carregando...</p>;

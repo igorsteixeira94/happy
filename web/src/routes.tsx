@@ -11,8 +11,8 @@ const Routes: React.FC = () => {
     <BrowserRouter>
       <Route path="/" exact component={Home} />
       <Route path="/app" exact component={OrphanagesMap} />
-      <Route path="/orphanages/create" exact component={CreateOrphaneges} />
       <Route path="/orphanages/:id" exact component={Orphanage} />
+      <Route path="/orphanages/create" exact component={CreateOrphaneges} />
     </BrowserRouter>
   );
 };
