@@ -44,7 +44,7 @@ export default {
     const orphanagesRepository = getMongoRepository(Orphanage);
 
     const orphanages = await orphanagesRepository.find();
-    return response.status(201).json(orphanages);
+    return response.status(201).json(orphanageView.renderMany(orphanages));
   },
 
   async show(request: Request, response: Response): Promise<Response> {
