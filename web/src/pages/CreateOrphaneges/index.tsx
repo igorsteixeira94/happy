@@ -58,13 +58,15 @@ const CreateOrphaneges: React.FC = () => {
       data.append('images', image);
     });
 
-    console.log(data);
+    try {
+      const response = await api.post('orphanages', data);
 
-    await api.post('orphanages', data);
+      alert('Cadastro realizado com sucesso');
 
-    alert('Cadastro realizado com sucesso');
-
-    history.push('/app');
+      history.push(`/orphanage/${response.data.id}`);
+    } catch (error) {
+      alert('Problemas ao cadastrar!');
+    }
   }
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {

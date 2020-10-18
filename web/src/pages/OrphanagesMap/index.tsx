@@ -66,7 +66,7 @@ const OrphanagesMap: React.FC = () => {
                 className="map-popup"
               >
                 {orphanage.name}
-                <Link to={`/orphanages/${orphanage.id}`}>
+                <Link to={`/orphanage/${orphanage.id}`}>
                   <FiArrowRight size={20} color="#FFF" />
                 </Link>
               </Popup>
