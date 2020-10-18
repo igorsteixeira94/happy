@@ -15,8 +15,15 @@ const mapIcon = Leaflet.icon({
   popupAnchor: [170, 2],
 });
 
+interface Orphanage {
+  id: string;
+  latitude: number;
+  longitude: number;
+  name: string;
+}
+
 const OrphanagesMap: React.FC = () => {
-  const [orphanages, setOrphanages] = useState([]);
+  const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
   useEffect(() => {
     api.get('/orphanages').then(response => {
       setOrphanages(response.data);
@@ -45,20 +52,27 @@ const OrphanagesMap: React.FC = () => {
         <TileLayer
           url={`https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
         />
-
-        <Marker icon={mapIcon} position={[-12.1615011, -44.9924582]}>
-          <Popup
-            closeButton={false}
-            minWidth={240}
-            maxWidth={240}
-            className="map-popup"
-          >
-            Lar das Meninas
-            <Link to="/orphanages/1">
-              <FiArrowRight size={20} color="#FFF" />
-            </Link>
-          </Popup>
-        </Marker>
+        {orphanages.map(orphanage => {
+          return (
+            <Marker
+              key={orphanage.id}
+              icon={mapIcon}
+              position={[orphanage.latitude, orphanage.longitude]}
+            >
+              <Popup
+                closeButton={false}
+                minWidth={240}
+                maxWidth={240}
+                className="map-popup"
+              >
+                {orphanage.name}
+                <Link to={`/orphanage/${orphanage.id}`}>
+                  <FiArrowRight size={20} color="#FFF" />
+                </Link>
+              </Popup>
+            </Marker>
+          );
+        })}
       </Map>
       <AddOrphanage to="/orphanages/create">
         <FiPlus size={26} />

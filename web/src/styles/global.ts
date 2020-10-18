@@ -31,4 +31,8 @@ export default createGlobalStyle`
     cursor:pointer;
   }
 
+  button{
+    outline:none;
+  }
+
 `;
