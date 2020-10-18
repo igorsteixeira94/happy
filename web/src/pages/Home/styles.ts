@@ -66,9 +66,15 @@ export const HomeWrapper = styled.div`
 
     main {
       align-items: center;
+      justify-content: flex-start;
+      h1 {
+        font-size: 2.4rem;
+        line-height: 3rem;
+        margin-top: 80px;
+        text-align: center;
+      }
     }
 
-    h1,
     p {
       display: none;
     }
