@@ -32,7 +32,7 @@ export default {
     orphanage.about = about;
     orphanage.instructions = instructions;
     orphanage.opening_hours = opening_hours;
-    orphanage.open_on_weekends = open_on_weekends;
+    orphanage.open_on_weekends = open_on_weekends === 'true';
     orphanage.images = images;
 
     const manager = getMongoManager();
