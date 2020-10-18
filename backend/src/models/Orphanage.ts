@@ -7,6 +7,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Images from './Images';
 
 @Entity('orphanages')
 export default class Orphanage {
@@ -33,6 +34,9 @@ export default class Orphanage {
 
   @Column()
   open_on_weekends: boolean;
+
+  @Column(type => Images)
+  images: Images[];
 
   @CreateDateColumn({ name: 'created_at', default: new Date(), type: 'date' })
   created_at: Date;
