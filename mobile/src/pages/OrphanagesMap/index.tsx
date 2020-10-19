@@ -65,8 +65,8 @@ const OrphanagesMap: React.FC = () => {
               key={orphanage.id}
               icon={mapMarker}
               coordinate={{
-                latitude: Number(orphanage.latitude),
-                longitude: Number(orphanage.longitude),
+                latitude: orphanage.latitude,
+                longitude: orphanage.longitude,
               }}
               calloutAnchor={{
                 x: 2.9,
@@ -88,7 +88,10 @@ const OrphanagesMap: React.FC = () => {
         })}
       </Map>
       <Footer>
-        <FooterText>{`${orphanages.length} orfanatos encontrados`} </FooterText>
+        <FooterText>
+{`${orphanages.length} orfanatos encontrados`}
+{' '}
+ </FooterText>
         <CreateOrphanageButton onPress={handleGoToCreateOrphanage}>
           <Feather name="plus" size={20} color="#fff" />
         </CreateOrphanageButton>

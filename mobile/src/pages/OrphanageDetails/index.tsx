@@ -141,7 +141,7 @@ const OrphanageDetails: React.FC = () => {
               </ScheduleText>
             ) : (
               <ScheduleText color="#FF669D">
-                Atendemos fim de semana
+                Não atendemos fim de semana
               </ScheduleText>
             )}
           </ScheduleItem>

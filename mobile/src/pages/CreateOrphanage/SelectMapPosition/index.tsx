@@ -1,38 +1,49 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
-import { Marker } from 'react-native-maps';
+import { Marker, MapEvent } from 'react-native-maps';
 
 import mapMarkerImg from '../../../images/map-marker.png';
 import { Container, Map, NextButton, NextButtonText } from './styles';
 
 const SelectMapPosition: React.FC = () => {
+  const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
   const navigation = useNavigation();
-
-  const handleNextStep = useCallback(() => {
-    navigation.navigate('CreateOrphanageData');
-  }, []);
 
   return (
     <Container>
       <Map
         initialRegion={{
-          latitude: -27.2092052,
-          longitude: -49.6401092,
+          latitude: -12.1619962,
+          longitude: -44.9906644,
           latitudeDelta: 0.008,
           longitudeDelta: 0.008,
         }}
+        onPress={event => {
+          setPosition(event.nativeEvent.coordinate);
+        }}
       >
-        <Marker
-          icon={mapMarkerImg}
-          coordinate={{ latitude: -27.2092052, longitude: -49.6401092 }}
-        />
+        {position.latitude !== 0 && (
+          <Marker
+            icon={mapMarkerImg}
+            coordinate={{
+              latitude: position.latitude,
+              longitude: position.longitude,
+            }}
+          />
+        )}
       </Map>
 
-      <NextButton onPress={handleNextStep}>
-        <NextButtonText>Próximo</NextButtonText>
-      </NextButton>
+      {position.latitude !== 0 && (
+        <NextButton
+          onPress={() => {
+            navigation.navigate('CreateOrphanageData', { position });
+          }}
+        >
+          <NextButtonText>Próximo</NextButtonText>
+        </NextButton>
+      )}
     </Container>
   );
 };
