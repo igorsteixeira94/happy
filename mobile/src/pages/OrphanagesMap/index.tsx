@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Marker, PROVIDER_GOOGLE, Callout } from 'react-native-maps';
 
 import { Feather } from '@expo/vector-icons';
 
+import { useNavigation } from '@react-navigation/native';
 import mapMarker from '../../images/map-marker.png';
 
 import {
@@ -17,6 +18,15 @@ import {
 } from './styles';
 
 const OrphanagesMap: React.FC = () => {
+  const navigation = useNavigation();
+
+  const handleGoToOrphanateDetails = useCallback(() => {
+    navigation.navigate('OrphanageDetails');
+  }, []);
+
+  const handleGoToCreateOrphanage = useCallback(() => {
+    navigation.navigate('CreateOrphanageSelectMap');
+  }, []);
   return (
     <Container>
       <Map
@@ -32,7 +42,7 @@ const OrphanagesMap: React.FC = () => {
           icon={mapMarker}
           coordinate={{ latitude: -12.1619962, longitude: -44.9906644 }}
         >
-          <Callout tooltip>
+          <Callout tooltip onPress={handleGoToOrphanateDetails}>
             <CalloutContainer>
               <CalloutText>Lar das meninas</CalloutText>
             </CalloutContainer>
@@ -41,11 +51,7 @@ const OrphanagesMap: React.FC = () => {
       </Map>
       <Footer>
         <FooterText>2 orfanatos encontrados</FooterText>
-        <CreateOrphanageButton
-          onPress={() => {
-            alert('sd');
-          }}
-        >
+        <CreateOrphanageButton onPress={handleGoToCreateOrphanage}>
           <Feather name="plus" size={20} color="#fff" />
         </CreateOrphanageButton>
       </Footer>

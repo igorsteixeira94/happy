@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import OrphanagesMap from './pages/OrphanagesMap';
 import OrphanageDetails from './pages/OrphanageDetails';
 import SelectMap from './pages/CreateOrphanage/SelectMap';
+import Header from './components/Header';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -20,12 +21,20 @@ const Routes: React.FC = () => {
         <Screen
           name="OrphanageDetails"
           component={OrphanageDetails}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: true,
+            header: () => <Header title="Orfanato" showCancel={false} />,
+          }}
         />
         <Screen
           name="CreateOrphanageSelectMap"
           component={SelectMap}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: true,
+            header: () => (
+              <Header title="Selecione no mapa." showCancel={false} />
+            ),
+          }}
         />
       </Navigator>
     </NavigationContainer>

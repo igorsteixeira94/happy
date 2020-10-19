@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({
   const navigation = useNavigation();
 
   const handleGoBackToOrphanagesMap = useCallback(() => {
-    navigation.navigate('OrpanhagesMap');
+    navigation.navigate('OrphanagesMap');
   }, []);
 
   return (
