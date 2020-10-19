@@ -3,8 +3,8 @@ import { View } from 'react-native';
 
 // import { Container } from './styles';
 
-const SelectMap: React.FC = () => {
+const OrphanageData: React.FC = () => {
   return <View />;
 };
 
-export default SelectMap;
+export default OrphanageData;
