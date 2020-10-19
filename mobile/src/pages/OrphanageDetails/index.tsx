@@ -1,8 +1,9 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Linking, ScrollView, Text } from 'react-native';
 import { Marker } from 'react-native-maps';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 
+import { useRoute } from '@react-navigation/native';
 import mapMarkerImg from '../../images/map-marker.png';
 
 import {
@@ -23,42 +24,74 @@ import {
   ContactButtonText,
   Map,
 } from './styles';
+import api from '../../../services/api';
+
+interface OrphanageDetailsRouterParams {
+  id: string;
+}
+
+interface Orphanage {
+  id: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  about: string;
+  instructions: string;
+  opening_hours: string;
+  open_on_weekends: boolean;
+  images: Array<{
+    url: string;
+  }>;
+}
 
 const OrphanageDetails: React.FC = () => {
+  const route = useRoute();
+  const [orphanage, setOrphanage] = useState<Orphanage>();
+
+  const params = route.params as OrphanageDetailsRouterParams;
+
+  function handleGoToGoogleMaps() {
+    Linking.openURL(
+      `https://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`,
+    );
+  }
+
+  useEffect(() => {
+    api.get(`orphanages/${params.id}`).then(response => {
+      setOrphanage(response.data);
+    });
+  }, [params.id]);
+
+  if (!orphanage) {
+    return <Text>Carregando...</Text>;
+  }
+
   return (
     <Container>
       <ImageWrapper>
         <ScrollView horizontal pagingEnabled>
-          <ImageOrphanage
-            source={{
-              uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg',
-            }}
-          />
-          <ImageOrphanage
-            source={{
-              uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg',
-            }}
-          />
-          <ImageOrphanage
-            source={{
-              uri: 'https://fmnova.com.br/images/noticias/safe_image.jpg',
-            }}
-          />
+          {orphanage.images.map(image => {
+            return (
+              <ImageOrphanage
+                key={Math.random()}
+                source={{
+                  uri: image.url,
+                }}
+              />
+            );
+          })}
         </ScrollView>
       </ImageWrapper>
 
       <DetailsContainer>
-        <DetailsTitle>Orf. Esperança</DetailsTitle>
-        <DetailsDescription>
-          Presta assistência a crianças de 06 a 15 anos que se encontre em
-          situação de risco e/ou vulnerabilidade social.
-        </DetailsDescription>
+        <DetailsTitle>{orphanage.name}</DetailsTitle>
+        <DetailsDescription>{orphanage.about}</DetailsDescription>
 
         <MapContainer>
           <Map
             initialRegion={{
-              latitude: -27.2092052,
-              longitude: -49.6401092,
+              latitude: orphanage.latitude,
+              longitude: orphanage.longitude,
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
             }}
@@ -70,13 +103,13 @@ const OrphanageDetails: React.FC = () => {
             <Marker
               icon={mapMarkerImg}
               coordinate={{
-                latitude: -27.2092052,
-                longitude: -49.6401092,
+                latitude: orphanage.latitude,
+                longitude: orphanage.longitude,
               }}
             />
           </Map>
 
-          <RoutesContainer>
+          <RoutesContainer onPress={handleGoToGoogleMaps}>
             <RoutesText>Ver rotas no Google Maps</RoutesText>
           </RoutesContainer>
         </MapContainer>
@@ -84,21 +117,33 @@ const OrphanageDetails: React.FC = () => {
         <Line />
 
         <DetailsTitle>Instruções para visita</DetailsTitle>
-        <DetailsDescription>
-          Venha como se sentir a vontade e traga muito amor e paciência para
-          dar.
-        </DetailsDescription>
+        <DetailsDescription>{orphanage.instructions}</DetailsDescription>
 
         <ScheduleContainer>
-          <ScheduleItem background="#E6F7FB" borderColor="#5C8599">
+          <ScheduleItem background="#E6F7FB" borderColor="#B3DAE2">
             <Feather name="clock" size={40} color="#2AB5D1" />
             <ScheduleText color="#5C8599">
-              Segunda à Sexta 8h às 18h
+              {orphanage.opening_hours}
             </ScheduleText>
           </ScheduleItem>
-          <ScheduleItem background="#EDFFF6" borderColor="#37C77F">
-            <Feather name="info" size={40} color="#39CC83" />
-            <ScheduleText color="#37C77F">Atendemos fim de semana</ScheduleText>
+          <ScheduleItem
+            background={orphanage.open_on_weekends ? '#EDFFF6' : '#ffffff'}
+            borderColor={orphanage.open_on_weekends ? '#37C77F' : '#FFBCD4'}
+          >
+            <Feather
+              name="info"
+              size={40}
+              color={orphanage.open_on_weekends ? '#39CC83' : '#FF669D'}
+            />
+            {orphanage.open_on_weekends ? (
+              <ScheduleText color="#39CC83">
+                Atendemos fim de semana
+              </ScheduleText>
+            ) : (
+              <ScheduleText color="#FF669D">
+                Atendemos fim de semana
+              </ScheduleText>
+            )}
           </ScheduleItem>
         </ScheduleContainer>
 

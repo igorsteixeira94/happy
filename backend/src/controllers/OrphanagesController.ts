@@ -27,12 +27,12 @@ export default {
     const orphanage = new Orphanage();
 
     orphanage.name = name;
-    orphanage.latitude = latitude;
-    orphanage.longitude = longitude;
+    orphanage.latitude = Number(latitude);
+    orphanage.longitude = Number(longitude);
     orphanage.about = about;
     orphanage.instructions = instructions;
     orphanage.opening_hours = opening_hours;
-    orphanage.open_on_weekends = open_on_weekends === 'true';
+    orphanage.open_on_weekends = !!(open_on_weekends === 'true');
     orphanage.images = images;
 
     const manager = getMongoManager();

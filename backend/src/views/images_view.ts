@@ -4,7 +4,7 @@ import Images from '../models/Images';
 export default {
   render(image: Images) {
     return {
-      url: `http://localhost:3333/uploads/${image.path}`,
+      url: `http://192.168.0.109:3333/uploads/${image.path}`,
     };
   },
 
