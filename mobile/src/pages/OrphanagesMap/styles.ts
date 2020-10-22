@@ -26,6 +26,7 @@ export const CalloutContainer = styled.View`
 // Nome do orfanato
 export const CalloutText = styled.Text`
   font-family: 'Nunito_700Bold';
+  font-weight: bold;
   color: #0089a5;
   font-size: 14px;
 `;
@@ -52,6 +53,7 @@ export const Footer = styled.View.attrs({
 // Texto com quantidade de orfanatos
 export const FooterText = styled.Text`
   font-family: 'Nunito_700Bold';
+  font-weight: bold;
   color: #8fa7b3;
 `;
 
