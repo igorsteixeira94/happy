@@ -25,6 +25,16 @@ cd happy
 cd web
 yarn install
 yarn start
+
+#Iniciando o BackEnd localhost:3333
+cd backend
+yarn install
+yarn dev
+
+#Iniciando o Mobile 
+cd mobile
+yarn start
+yarn android
 ```
 
 
@@ -36,6 +46,17 @@ yarn start
   * React Router DOM;
   * Styled-Components;
   * Leaflet e react-leaflet;
+  
+* BackEnd (Api):
+  * Nodejs;
+  * TypeORM e MongoDB;
+  * Express;
+  
+* Mobile (Expo):
+  * React Native;
+  * React Navigation;
+  * Styled-Components;
+  * Expo-cli;
 
 
 
