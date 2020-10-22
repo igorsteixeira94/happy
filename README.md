@@ -10,8 +10,8 @@
 
 <h1 align="center">Índice</h1>
 
-[Como Usar](#como-usar)  | [Tecnologias](#rocket-tecnologias) |  [Features](#features-implementadas) |  [Screenshot](#screenshot) |  [Estrutura Pastas](#estrutura-pastas)
-:-------:                | ------:                            |:-------:                             | ------:                    | ------:
+[Como Usar](#como-usar)  | [Tecnologias](#rocket-tecnologias) 
+:-------:                | ------:                          
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c5691026-2379-43cc-acc1-18c0866a4ea2/deploy-status)](https://happynlw.netlify.app/)
 
@@ -36,7 +36,6 @@ cd mobile
 yarn start
 yarn android
 ```
-
 
 
 ## :rocket: Tecnologias
